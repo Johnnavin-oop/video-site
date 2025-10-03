@@ -27,6 +27,18 @@ nav a {
 nav a:hover {
   color: #ff6600;
 }
+.upload-btn {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.upload-btn:hover {
+  background: #0056b3;
+}
 
 form {
   text-align: center;

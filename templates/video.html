@@ -9,5 +9,11 @@
   <h1>{{video[1]}}</h1>
   <video src="/static/uploads/{{video[2]}}" controls width="600"></video>
   <p>{{video[3]}} views</p>
+  <h2>Admin Upload</h2>
+<form method="POST" action="/upload" enctype="multipart/form-data">
+  <input type="file" name="video" accept="video/mp4" required>
+  <input type="password" name="password" placeholder="Admin Password" required>
+  <button type="submit">Upload</button>
+</form> 
 </body>
 </html>
