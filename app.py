@@ -24,20 +24,13 @@ init_db()
 
 @app.route('/')
 def index():
-    filter = request.args.get('filter', 'latest')
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
-    if filter == 'latest':
-        c.execute("SELECT * FROM videos ORDER BY upload_time DESC")
-    elif filter == 'old':
-        c.execute("SELECT * FROM videos ORDER BY upload_time ASC")
-    elif filter == 'views':
-        c.execute("SELECT * FROM videos ORDER BY views DESC")
-    else:
-        c.execute("SELECT * FROM videos")
+    c.execute("SELECT id, title, filename, views FROM videos ORDER BY upload_time DESC")
     videos = c.fetchall()
     conn.close()
-    return render_template('index.html', videos=videos)
+    is_admin = session.get('admin', False)
+    return render_template('index.html', videos=videos, is_admin=is_admin)
 
 @app.route('/search')
 def search():

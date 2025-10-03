@@ -24,7 +24,6 @@
 {% if is_admin %}
   <a href="/upload" class="upload-btn">📤 Upload New Video</a>
 {% endif %}
-
   <div class="gallery">
     {% for v in videos %}
       <div class="card" data-aos="zoom-in" onclick="location.href='/video/{{v[0]}}'">
