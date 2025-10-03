@@ -2,12 +2,22 @@
 <html>
 <head>
   <title>Upload Video</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <h2>Upload a Video</h2>
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="video" accept="video/mp4" required>
-    <button type="submit">Upload</button>
-  </form>
+  <button onclick="toggleDarkMode()" id="darkToggle">🌙 Dark Mode</button>
+  <h2>📤 Upload Video</h2>
+
+  <div data-aos="fade-up">
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="Video Title" required>
+      <input type="file" name="video" accept="video/mp4" required>
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+
+  <a href="/logout">Logout</a>
+  <script src="/static/js/script.js"></script>
 </body>
 </html>

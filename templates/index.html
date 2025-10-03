@@ -2,19 +2,36 @@
 <html>
 <head>
   <title>Video Gallery</title>
-  <link rel="stylesheet" href="/static/styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </head>
 <body>
-  <h1>Welcome to NavinTube</h1>
-  {% for video in videos %}
-    <div class="video-container">
-      <video width="480" controls>
-        <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p>{{ video }}</p>
-    </div>
-  {% endfor %}
+  <div id="loader"></div>
+  <h1>🎬 Welcome to the Video Gallery</h1>
+  <button onclick="toggleDarkMode()" id="darkToggle">🌙 Dark Mode</button>
+
+  <form action="/search">
+    <input type="text" name="q" placeholder="Search videos...">
+    <button type="submit">Search</button>
+  </form>
+
+  <nav>
+    <a href="/?filter=latest">Latest</a>
+    <a href="/?filter=old">Oldest</a>
+    <a href="/?filter=views">Most Viewed</a>
+  </nav>
+
+  <div class="gallery">
+    {% for v in videos %}
+      <div class="card" data-aos="zoom-in" onclick="location.href='/video/{{v[0]}}'">
+        <video src="/static/uploads/{{v[2]}}" muted></video>
+        <h3>{{v[1]}}</h3>
+        <p>{{v[3]}} views</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script src="/static/js/script.js"></script>
 </body>
 </html>
